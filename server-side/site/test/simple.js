@@ -1,7 +1,7 @@
 const assert = require('assert');
 const expect = require('chai').expect;
 const got   = require('got');
-const child_proc = require('child_process');
+const main = require('../server')
 
 describe('main', function() {
     describe('#start()', function() {
@@ -18,7 +18,21 @@ describe('main', function() {
 });
 
 
+describe('main', function() {
+    describe('#start()', function() {
+      it('should start server on port 9001', async () => {
 
+          await main.start();
+
+          const response = await got('http://localhost:3002/api/study/vote/status', {timeout:500})
+	  console.log(response.body);
+
+          // Stop server
+          await main.stop();
+          expect(response.body).to.include('ok');
+      });
+    });
+});
 
 
 

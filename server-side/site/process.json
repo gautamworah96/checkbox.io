@@ -1,0 +1,8 @@
+{
+    "apps" : [{
+      "name"        : "checkbox-server",
+      "script"      : "./server.js"
+    }]
+}
+
+
