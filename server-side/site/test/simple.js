@@ -3,6 +3,7 @@ const expect = require('chai').expect;
 const got   = require('got');
 const main = require('../server')
 
+/*
 describe('main', function() {
     describe('#start()', function() {
       it('should start server on port 3002, vote status api should return ok', async () => {
@@ -16,7 +17,7 @@ describe('main', function() {
       });
     });
 });
-
+*/
 
 describe('main', function() {
     describe('#start()', function() {
