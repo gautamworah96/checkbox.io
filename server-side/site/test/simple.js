@@ -21,16 +21,18 @@ describe('main', function() {
 
 describe('main', function() {
     describe('#start()', function() {
-      it('should start server on port 9001', async () => {
+      it('Should start server on port 9001', async () => {
 
           await main.start();
 
-          const response = await got('http://localhost:3002/api/study/vote/status', {timeout:500})
+          const response = await got('http://localhost:42018/api/study/listing', {timeout:50000})
 	  console.log(response.body);
 
           // Stop server
-          await main.stop();
-          expect(response.body).to.include('ok');
+	  console.log(response.statusCode);
+	  console.log("^^^ Status code of repsonse");
+          expect(response.statusCode.toString()).to.include('200');
+	  await main.stop();
       });
     });
 });

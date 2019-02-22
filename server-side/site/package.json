@@ -24,7 +24,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "nodejs server.js",
+    "start": " node server.js start 3002",
     "deploy": "pm2 start process.json",
     "stop": "pm2 stop process.json"
   }
