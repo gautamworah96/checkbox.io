@@ -25,7 +25,7 @@ describe('main', function() {
 
           await main.start();
 
-          const response = await got('http://localhost:42018/api/study/listing', {timeout:50000})
+          const response = await got('http://localhost:'+process.env.APP_PORT+'/api/study/listing', {timeout:50000})
 	  console.log(response.body);
 
           // Stop server

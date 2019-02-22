@@ -23,7 +23,7 @@
     "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit",
     "start": " node server.js start 3002",
     "deploy": "pm2 start process.json",
     "stop": "pm2 stop process.json"

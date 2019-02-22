@@ -88,9 +88,7 @@ app.post('/api/study/admin/notify/', admin.notifyParticipant);
 var args = process.argv.slice(2);
 var CMD = args[0] || "test";
 var PORT = process.env.APP_PORT;
-var port = process.env.APP_PORT;
-app.listen(port);
-console.log(`Listening on port ${port}...`);
+console.log(`Listening on port ${PORT}...`);
 
 
 
@@ -100,17 +98,13 @@ function start()
 	{
 		server = app.listen(PORT, function () {
 
-			var host = server.address().address
-			var port = process.env.APP_PORT;
-			app.listen(port);
-			console.log(`Listening on port ${port}...`);
 			
-
-			console.log('Example app listening at http://%s:%s', host, port)
-			resolve({host: host, port: port});
+			console.log(`Listening on port ${PORT}...`);
+			console.log('Example app listening at http://localhost:%s',PORT)
+			resolve({ port: PORT});
 		}).on('error', function (err) {
 			if(err.errno === 'EADDRINUSE') {
-				console.log(`----- Port ${port} is busy, try with another port`);
+				console.log(`----- Port ${PORT} is busy, try with another port`);
 			} else {
 				console.log(err);
 			}
