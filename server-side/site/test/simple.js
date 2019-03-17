@@ -2,38 +2,33 @@ const assert = require('assert');
 const expect = require('chai').expect;
 const got   = require('got');
 const main = require('../server')
-
-/*
-describe('main', function() {
-    describe('#start()', function() {
-      it('should start server on port 3002, vote status api should return ok', async () => {
-          
-          var childProcess = child_proc.spawn('nodejs',['server.js'], {cwd: "/home/vagrant/checkboxCode/server-side/site/"})
-          console.log("Server started on pid:" + childProcess.pid);
-          const response = await got('http://localhost:3002/api/study/vote/status', {timeout:500})
-          // Stop server
-          expect(response.body).to.include('ok');
-	  childProcess.kill('SIGINT');
-      });
-    });
-});
-*/
+var fs = require("fs");
 
 describe('main', function() {
     describe('#start()', function() {
       it('Should start server on port 9001', async () => {
 
-          await main.start();
+      await main.start();
 
-          const response = await got('http://localhost:'+process.env.APP_PORT+'/api/study/listing', {timeout:50000})
+      const response = await got('http://localhost:'+process.env.APP_PORT+'/api/study/listing', {timeout:50000})
 	  console.log(response.body);
 
           // Stop server
 	  console.log(response.statusCode);
 	  console.log("^^^ Status code of repsonse");
-          expect(response.statusCode.toString()).to.include('200');
+      expect(response.statusCode.toString()).to.include('200');
 	  await main.stop();
       });
+
+      it('An error file that records the errors (according to custom metric) should not exist', function(){
+
+	      	fs.exists("/home/vagrant/checkBoxErrors", function(result) {
+	        console.log('TEST MODE: fs.exists callback RAN.');
+	        console.log('TEST MODE: fs.exists: should be false, and is: ', result);
+	        assert.equal(false, result);
+	      })
+      });
+
     });
 });
 
