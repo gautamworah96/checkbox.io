@@ -8,6 +8,7 @@ var express = require('express'),
 	study = require('./routes/study.js'),
 	admin = require('./routes/admin.js');
 
+var micro_url="http://a5317378c62df11e987c40a61b8913e1-1568324527.us-east-1.elb.amazonaws.com:8081/getMarkdown";
 var app = express();
 
 app.configure(function () {
@@ -30,8 +31,7 @@ app.post('/api/design/survey',
 	{
 		console.log(req.body.markdown);
 		//var text = marqdown.render( req.query.markdown );
-		var text = marqdown.render( req.body.markdown );
-		res.send( {preview: text} );
+		res.redirect(307,micro_url);
 	}
 );
 
@@ -125,3 +125,4 @@ function stop()
 })();
 
 module.exports = { start: start, stop: stop};
+
