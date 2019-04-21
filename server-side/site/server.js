@@ -32,7 +32,7 @@ app.post('/api/design/survey',
 	{
 		console.log(req.body.markdown);
 		//var text = marqdown.render( req.query.markdown );
-		res.redirect(307,micro_url);
+		res.redirect(307,"http://"+micro_url+":8081/getMarkdown");
 	}
 );
 
