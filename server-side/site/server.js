@@ -9,7 +9,7 @@ var express = require('express'),
 	admin = require('./routes/admin.js');
 
 var fs = require('fs');
-var json_obj = JSON.parse(fs.readFileSync('/home/ubuntu/Devops-Milestone3/foo.conf', 'utf8'));
+var json_obj = JSON.parse(fs.readFileSync('/home/ubuntu/foo.conf', 'utf8'));
 var micro_url = json_obj.externalIP;
 //var micro_url="http://a5317378c62df11e987c40a61b8913e1-1568324527.us-east-1.elb.amazonaws.com:8081/getMarkdown";
 var app = express();
